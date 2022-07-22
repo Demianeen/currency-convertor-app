@@ -1,0 +1,16 @@
+/* TODO: Add stylelint */
+.wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  background: #212534;
+}
+
+/* TODO:  min-height: 100% don't work*/
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  min-width: 100%;
+}
