@@ -6,14 +6,17 @@ export enum currencyActionTypes {
   CHANGE_TO_CURRENCY = 'CHANGE_TO_CURRENCY',
 }
 
+export interface IApiResponse {
+  base: string,
+  rates: Record<string, number>
+}
+
 export interface ICurrencyState {
   currencyRates: Record<string, number>
   availableCurrencyOptions: string[],
   fromCurrency: string,
   toCurrency: string,
   exchangeRate: number,
-  // TODO: add loading
-  error?: string | null
 }
 
 export interface IGetCurrencyRatesSuccessAction {

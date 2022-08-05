@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { HeaderProps } from './Header.props'
 import styles from './Header.module.css'
-import { useTypedSelector } from '../../hooks/useTypesSelector'
-
 import cn from 'classnames'
+import { useAppSelector } from '../../hooks/redux'
 
 const Header = ({ className, ...props }: HeaderProps) => {
-  const { currencyRates } = useTypedSelector(store => store.currency)
+  const { currencyRates } = useAppSelector(store => store.currency)
 
   const [rateUSD, setRateUSD] = useState<number | null>(null)
   const [rateEUR, setRateEUR] = useState<number | null>(null)

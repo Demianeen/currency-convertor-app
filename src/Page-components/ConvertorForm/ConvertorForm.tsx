@@ -2,13 +2,18 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { ConvertorProps } from './ConvertorForm.props'
 import styles from './ConvertorForm.module.css'
 import cn from 'classnames'
+import { currencyApi } from '../../service/CurrencyServices'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { Input, Select } from '../../Components'
-import { useTypedSelector } from '../../hooks/useTypesSelector'
-import { useAction } from '../../hooks/useAction'
+import { currencySlice } from '../../store/reducers/currency/slice'
 
 const Convertor = ({ className, ...props }: ConvertorProps) => {
-  const { availableCurrencyOptions, exchangeRate, fromCurrency, toCurrency, error } = useTypedSelector(store => store.currency)
-  const { getCurrencyRates, changeToCurrency, changeFromCurrency } = useAction()
+  const [baseCurrency, setBaseCurrency] = useState('UAH')
+  const { data: currencyRates, isLoading, isError, isSuccess, error } = currencyApi.useFetchCurrencyRatesQuery(baseCurrency)
+
+  const dispatch = useAppDispatch()
+  const { availableCurrencyOptions, exchangeRate, fromCurrency, toCurrency } = useAppSelector(store => store.currency)
+  const { getCurrencyRates, changeToCurrency } = currencySlice.actions
 
   const [amountFrom, setAmountFrom] = useState(1)
   const [amountTo, setAmountTo] = useState(1)
@@ -24,20 +29,35 @@ const Convertor = ({ className, ...props }: ConvertorProps) => {
   }
 
   useEffect(() => {
-    getCurrencyRates()
-  }, [])
+    if (isSuccess) {
+      dispatch(getCurrencyRates(currencyRates))
+    }
+  }, [currencyRates])
 
   useEffect(() => {
     handleFromAmountChange(amountFrom)
   }, [fromCurrency])
 
   useEffect(() => {
-    // handleToAmountChange
     handleFromAmountChange(amountFrom)
   }, [toCurrency])
 
-  if (error) {
-    return <h1>{'error'}</h1>
+  if (isLoading) {
+    return <h1>{'Loading...'}</h1>
+  }
+
+  if (isError) {
+    if ('status' in error) {
+      const errMsg = 'error' in error ? error.error : JSON.stringify(error.data)
+
+      return (
+        <div>
+          <h1>{'An error has occurred:'}</h1>
+          <h2>{errMsg}</h2>
+        </div>
+      )
+    }
+    return <h1>{error.message}</h1>
   }
 
   return (
@@ -49,9 +69,9 @@ const Convertor = ({ className, ...props }: ConvertorProps) => {
       <form action={ '' } className={ styles.convertorForm }>
         <Select
           currencyOptions={ availableCurrencyOptions }
-          currentCurrency={ fromCurrency }
-          onChange={ (event: ChangeEvent<HTMLSelectElement>) => changeFromCurrency(event.target.value) }
-          title={ `exchange rate: ${1 / exchangeRate}` }
+          currentCurrency={ baseCurrency }
+          onChange={ (event: ChangeEvent<HTMLSelectElement>) => setBaseCurrency(event.target.value) }
+          title={ `exchange rate: ${exchangeRate}` }
           className={ styles.select }
         />
         <Input
@@ -64,9 +84,9 @@ const Convertor = ({ className, ...props }: ConvertorProps) => {
         <Select
           currencyOptions={ availableCurrencyOptions }
           currentCurrency={ toCurrency }
-          onChange={ (event: ChangeEvent<HTMLSelectElement>) => changeToCurrency(event.target.value) }
+          onChange={ (event: ChangeEvent<HTMLSelectElement>) => dispatch(changeToCurrency(event.target.value)) }
           className={ styles.select }
-          title={ `exchange rate: ${exchangeRate}` }
+          title={ `exchange rate: ${1 / exchangeRate}` }
         />
         <Input
           onChange={ (e) => handleToAmountChange(Number(e.target.value)) }
