@@ -1,16 +1,15 @@
 .convertorContainer {
-  background: #191c29;
-  width: 65vmin;
-  padding: 5vmin;
   position: relative;
-  border-radius: 15px;
-  justify-content: center;
-  align-items: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 65vmin;
+  padding: 5vmin;
   color: white;
-  box-shadow: rgba(79, 86, 94, 0.2) 0px 8px 24px;
-
+  background: #191C29;
+  border-radius: 15px;
+  box-shadow: rgb(79 86 94 / 20%) 0 8px 24px;
 }
 
 .convertorForm {
