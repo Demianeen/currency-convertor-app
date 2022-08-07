@@ -22,8 +22,8 @@ const Header = ({ className, ...props }: HeaderProps) => {
       className={ cn(styles.header, className) }
       { ...props }
     >
-      <p>{`USD/UAH: ${rateUSD ? Math.round(1 / rateUSD * 100) / 100 : 1}`}</p>
-      <p>{`EUR/UAH: ${rateEUR ? Math.round(1 / rateEUR * 100) / 100 : 1}`}</p>
+      <div>{`USD/UAH: ${rateUSD ? Math.round(1 / rateUSD * 100) / 100 : 1}`}</div>
+      <div>{`EUR/UAH: ${rateEUR ? Math.round(1 / rateEUR * 100) / 100 : 1}`}</div>
     </header>
   )
 }

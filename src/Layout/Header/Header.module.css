@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-evenly;
   background: #70a1ff;
+  padding: 20px;
   color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

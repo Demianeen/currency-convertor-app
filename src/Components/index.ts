@@ -1,3 +1,5 @@
 // export { default as ConvertorColumn } from './ConvertorColumn/ConvertorColumn'
-export { default as Input } from './Input/Input'
+export { default as StyledNumberFormat } from './StyledNumberFormat/StyledNumberFormat'
 export { default as Select } from './Select/Select'
+export { default as P } from './P/P'
+export { default as Htag } from './Htag/Htag'

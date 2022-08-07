@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { SelectProps } from './Select.props'
 import styles from './Select.module.css'
 import cn from 'classnames'
@@ -14,4 +14,4 @@ const Select = ({ currencyOptions, currentCurrency, className, ...props }: Selec
   )
 }
 
-export default Select
+export default memo(Select)
