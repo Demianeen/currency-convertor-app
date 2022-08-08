@@ -2,9 +2,6 @@
   padding: 15px;
   font-size: large;
   border: none;
+  border: 3px solid var(--dark-theme-primary);
   border-radius: 5px;
-}
-
-.lightInput {
-  border: 3px solid black;
 }

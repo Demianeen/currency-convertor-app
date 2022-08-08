@@ -13,6 +13,7 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
     useAppSelector(store => store.currency)
   const { changeToCurrency } = currencySlice.actions
 
+  // TODO: Change to useRef
   const [amountFrom, setAmountFrom] = useState(1)
   const [amountTo, setAmountTo] = useState(1)
   const [symbolFrom, setSymbolFrom] = useState('UAH')
@@ -38,9 +39,6 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
     const resultValue = typeof newValue === 'string'
       ? Number(newValue.match(/(\d+)+(\.\d+)?/g)!.join(''))
       : newValue
-
-    console.log(resultValue)
-
     setAmountTo(resultValue)
     setAmountFrom(Math.floor(resultValue / exchangeRate * 100) / 100)
   }
@@ -64,6 +62,7 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
       title={ `exchange rate: ${exchangeRate}` }
       className={ styles.select }
     />
+    {/* TODO: Input a e.target.select() without select currency prefix */}
     <StyledNumberFormat
       onChange={ (e: ChangeEvent<HTMLInputElement>) => handleFromAmountChange(e.target.value) }
       onFocus={ (e: FocusEvent<HTMLInputElement, Element>) => e.target.select() }
