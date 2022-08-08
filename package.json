@@ -18,6 +18,7 @@
     "react-number-format": "^4.9.3",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
+    "react-switch": "^7.0.0",
     "redux": "^4.2.0",
     "stylelint": "^14.9.1",
     "stylelint-config-rational-order": "^0.1.2",

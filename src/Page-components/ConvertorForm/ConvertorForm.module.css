@@ -1,4 +1,12 @@
-.convertorContainer {
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 85vh;
+}
+
+.container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -6,13 +14,20 @@
   justify-content: center;
   width: 65vmin;
   padding: 5vmin;
-  color: white;
-  background: #191C29;
-  border-radius: 15px;
+  border-radius: 20px;
+}
+
+.lightContainer {
+  background: var(--light-theme-primary);
   box-shadow: rgb(79 86 94 / 20%) 0 8px 24px;
 }
 
-.convertorForm {
+.darkContainer {
+  background: var(--dark-theme-primary);
+  box-shadow: rgb(106 110 116 / 20%) 0 8px 24px;
+}
+
+.form {
   display: grid;
   grid-template-columns: [column-start] 1fr 1fr [column-end];
   gap: 1vmin 3vmin;
@@ -23,7 +38,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .convertorForm {
+  .form {
     grid-template-columns: [column-start] 1fr [column-end];
   }
 }

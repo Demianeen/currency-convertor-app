@@ -1,0 +1,8 @@
+:root {
+  --light-theme-background: #F1E8F7;
+  --light-theme-primary: white;
+  --light-theme-header: #3498DB;
+  --dark-theme-background: #212534;
+  --dark-theme-primary: #191C29;
+  --dark-theme-header: #2980B9;
+}

@@ -3,7 +3,7 @@ import { HtagProps } from './P.props'
 import styles from './P.module.css'
 import cn from 'classnames'
 
-const Htag = ({ children, className, ...props }: HtagProps) => {
+const P = ({ children, className, ...props }: HtagProps) => {
   return (<p
     className={ cn(styles.p, className) }
     { ...props }
@@ -12,4 +12,4 @@ const Htag = ({ children, className, ...props }: HtagProps) => {
   </p>)
 }
 
-export default memo(Htag)
+export default memo(P)

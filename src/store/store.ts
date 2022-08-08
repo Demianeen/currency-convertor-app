@@ -1,9 +1,11 @@
 import { currencyApi } from '../service/CurrencyServices'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { currencySlice } from './reducers/currency/slice'
+import { themeSlice } from './reducers/theme/slice'
 
 export const rootReducer = combineReducers({
   [currencySlice.name]: currencySlice.reducer,
+  [themeSlice.name]: themeSlice.reducer,
   [currencyApi.reducerPath]: currencyApi.reducer
 })
 

@@ -1,16 +1,24 @@
-/* TODO: Add stylelint */
 .wrapper {
   box-sizing: border-box;
   width: 100%;
   min-height: 100vh;
-  background: #212534;
+  transition: all 0.2s ease-out;
+}
+
+.lightWrapper {
+  color: black;
+  background: var(--light-theme-background);
+}
+
+.darkWrapper {
+  color: white;
+  background: var(--dark-theme-background);
 }
 
 /* TODO:  min-height: 100% don't work */
 .main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 100%;
-  min-height: 90vh;
 }

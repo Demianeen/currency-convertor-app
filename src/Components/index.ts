@@ -3,3 +3,4 @@ export { default as StyledNumberFormat } from './StyledNumberFormat/StyledNumber
 export { default as Select } from './Select/Select'
 export { default as P } from './P/P'
 export { default as Htag } from './Htag/Htag'
+export { default as ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher'

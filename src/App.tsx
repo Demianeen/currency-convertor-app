@@ -1,12 +1,13 @@
 import React from 'react'
 import { withLayout } from './Layout/Layout'
-import { ConvertorForm } from './Page-components/index'
+import { About, ConvertorForm } from './Page-components/index'
 
 // TODO: Add dark and light theme using useContext
 function App () {
   return (
     <>
       <ConvertorForm />
+      <About/>
     </>
   )
 }
