@@ -1,2 +1,2 @@
-export { default as ConvertorForm } from './ConvertorForm/ConvertorForm'
+export { default as Converter } from './Converter/Converter'
 export { default as About } from './About/About'

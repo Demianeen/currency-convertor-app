@@ -26,19 +26,3 @@
   background: var(--dark-theme-primary);
   box-shadow: rgb(106 110 116 / 20%) 0 8px 24px;
 }
-
-.form {
-  display: grid;
-  grid-template-columns: [column-start] 1fr 1fr [column-end];
-  gap: 1vmin 3vmin;
-}
-
-.p {
-  grid-column: column-start / column-end;
-}
-
-@media screen and (max-width: 500px) {
-  .form {
-    grid-template-columns: [column-start] 1fr [column-end];
-  }
-}

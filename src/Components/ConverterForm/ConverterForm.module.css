@@ -1,0 +1,15 @@
+.form {
+  display: grid;
+  grid-template-columns: [column-start] 1fr 1fr [column-end];
+  gap: 1vmin 3vmin;
+}
+
+.p {
+  grid-column: column-start / column-end;
+}
+
+@media screen and (max-width: 500px) {
+  .form {
+    grid-template-columns: [column-start] 1fr [column-end];
+  }
+}
