@@ -9,6 +9,12 @@ import { currencySlice } from '../../store/reducers/currency/slice'
 
 const Converter = ({ className, ...props }: ConvertorProps) => {
   const [baseCurrency, setBaseCurrency] = useState('UAH')
+  const changeBaseCurrency = (option: string | null) => {
+    if (option) {
+      setBaseCurrency(option)
+    }
+  }
+
   const { data: currencyRates, isSuccess, isLoading, isFetching, isError, error } =
     currencyApi.useFetchCurrencyRatesQuery(baseCurrency)
 
@@ -52,7 +58,7 @@ const Converter = ({ className, ...props }: ConvertorProps) => {
 
           : <>
             <Htag tag={ 'h2' } className={ styles.h2 }>{isFetching ? 'Loading...' : 'Currency Converter'}</Htag>
-            <ConverterForm changeFromCurrency={ setBaseCurrency } />
+            <ConverterForm changeFromCurrency={ changeBaseCurrency } />
           </>
         }
       </div>

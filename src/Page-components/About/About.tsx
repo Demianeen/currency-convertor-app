@@ -1,4 +1,4 @@
-import React, { memo, RefObject, useEffect, useMemo, useRef, useState } from 'react'
+import React, { RefObject, useEffect, useMemo, useRef, useState } from 'react'
 import { Htag, P } from '../../Components'
 import styles from './About.module.css'
 import { ReactComponent as ArrowDown } from './arrow-down.svg'
@@ -93,4 +93,4 @@ const About = () => {
 }
 
 // TODO: Try to remove memo
-export default memo(About)
+export default About

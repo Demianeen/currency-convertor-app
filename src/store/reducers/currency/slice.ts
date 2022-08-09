@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ICurrencyApiResponse, ICurrencyState } from './types'
 
-// TODO: Add some initial values to load first content paint when value is loading
 const initialState: ICurrencyState = {
   currencyRates: {},
   availableCurrencyOptions: [],
-  fromCurrency: 'UAH',
-  toCurrency: 'USD',
-  exchangeRate: 1 / 36
+  fromCurrency: '',
+  toCurrency: '',
+  exchangeRate: 1
 }
 
 export const currencySlice = createSlice({

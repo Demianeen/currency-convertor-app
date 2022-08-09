@@ -1,7 +1,9 @@
 .input {
-  padding: 15px;
+  padding: 8px 15px;
   font-size: large;
-  border: none;
-  border: 3px solid var(--dark-theme-primary);
+  border: 2px solid var(--dark-theme-primary);
+
+  /* border: 1px solid #CCC; */
   border-radius: 5px;
+  outline: none;
 }

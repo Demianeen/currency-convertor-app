@@ -4,9 +4,20 @@
   gap: 1vmin 3vmin;
 }
 
-.p {
+.label {
   grid-column: column-start / column-end;
 }
+
+/* .select {
+  padding: 15px;
+  font-size: large;
+} */
+
+/* .select div div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+} */
 
 @media screen and (max-width: 500px) {
   .form {

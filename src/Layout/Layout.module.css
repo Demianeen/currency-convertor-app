@@ -15,7 +15,6 @@
   background: var(--dark-theme-background);
 }
 
-/* TODO:  min-height: 100% don't work */
 .main {
   display: flex;
   flex-direction: column;

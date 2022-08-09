@@ -1,0 +1,13 @@
+.select {
+  box-sizing: border-box !important;
+  font-size: large !important;
+  border: 2px solid var(--dark-theme-primary) !important;
+  border-radius: 5px !important;
+  outline: none !important;
+}
+
+/* FIXME: Make select border none style without global formatting */
+.select * {
+  border: none !important;
+  outline: none !important;
+}

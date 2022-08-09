@@ -13,7 +13,6 @@ const Header = ({ className, ...props }: HeaderProps) => {
   const [rateUSD, setRateUSD] = useState<number | null>(null)
   const [rateEUR, setRateEUR] = useState<number | null>(null)
 
-  // TODO: Change to useRef
   useEffect(() => {
     if (rateUSD == null) {
       setRateUSD(currencyRates.USD)

@@ -1,11 +1,10 @@
 import React, { FocusEvent, ChangeEvent, memo, useEffect, useState } from 'react'
+// import Select, { components, SingleValue, SingleValueProps } from 'react-select'
+import { Label, StyledNumberFormat, StyledSelect } from '..'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { currencySlice } from '../../store/reducers/currency/slice'
-import P from '../P/P'
-import Select from '../Select/Select'
-import StyledNumberFormat from '../StyledNumberFormat/StyledNumberFormat'
-import { ConverterProps } from './Converter.props'
+import { ConverterProps } from './ConverterForm.props'
 import styles from './ConverterForm.module.css'
+import { currencySlice } from '../../store/reducers/currency/slice'
 
 const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
   const dispatch = useAppDispatch()
@@ -13,7 +12,6 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
     useAppSelector(store => store.currency)
   const { changeToCurrency } = currencySlice.actions
 
-  // TODO: Change to useRef
   const [amountFrom, setAmountFrom] = useState(1)
   const [amountTo, setAmountTo] = useState(1)
   const [symbolFrom, setSymbolFrom] = useState('UAH')
@@ -21,7 +19,15 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
 
   const getCurrencySymbol = (currency: string) => {
     // ua-UA just to load page. Here can be any other local
-    const res = (0).toLocaleString('ua-UA', { style: 'currency', currency, minimumFractionDigits: 0, maximumFractionDigits: 0 })
+    if (!currency) return
+    const res = (0)
+      .toLocaleString('ua-UA',
+        {
+          style: 'currency',
+          currency,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        })
       .replace(/\d/g, '').trim()
     return res
   }
@@ -49,20 +55,19 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
   }, [fromCurrency])
 
   useEffect(() => {
-    handleFromAmountChange(amountFrom)
+    handleToAmountChange(amountTo)
     setSymbolTo(getCurrencySymbol(toCurrency) + ' ')
   }, [toCurrency])
 
-  return (<form action={ '' } className={ styles.form }>
-    <P className={ styles.p }>{'From'}</P>
-    <Select
+  // TODO: Make all form with mui components
+  return (<form className={ styles.form }>
+    <Label id={ 'fromCurrency' } className={ styles.label }>{'From'}</Label>
+    {/* TODO: Input a e.target.select() without select currency prefix */}
+    <StyledSelect
       currencyOptions={ availableCurrencyOptions }
       currentCurrency={ fromCurrency }
-      onChange={ (event: ChangeEvent<HTMLSelectElement>) => changeFromCurrency(event.target.value) }
-      title={ `exchange rate: ${exchangeRate}` }
-      className={ styles.select }
+      onChange={ (e) => changeFromCurrency(e.target.value as string) }
     />
-    {/* TODO: Input a e.target.select() without select currency prefix */}
     <StyledNumberFormat
       onChange={ (e: ChangeEvent<HTMLInputElement>) => handleFromAmountChange(e.target.value) }
       onFocus={ (e: FocusEvent<HTMLInputElement, Element>) => e.target.select() }
@@ -74,13 +79,11 @@ const ConverterForm = ({ changeFromCurrency }: ConverterProps) => {
       value={ amountFrom }
     />
 
-    <P className={ styles.p }>{'To'}</P>
-    <Select
+    <Label htmlFor={ 'toCurrency' } className={ styles.label }>{'To'}</Label>
+    <StyledSelect
       currencyOptions={ availableCurrencyOptions }
       currentCurrency={ toCurrency }
-      onChange={ (event: ChangeEvent<HTMLSelectElement>) => dispatch(changeToCurrency(event.target.value)) }
-      className={ styles.select }
-      title={ `exchange rate: ${1 / exchangeRate}` }
+      onChange={ (e) => dispatch(changeToCurrency((e.target.value as string))) }
     />
     <StyledNumberFormat
       onChange={ (e: ChangeEvent<HTMLInputElement>) => handleToAmountChange(e.target.value) }
