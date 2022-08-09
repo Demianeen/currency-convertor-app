@@ -1,10 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ICurrencyApiResponse } from '../store/reducers/currency/types'
 
-// TODO: add process env
 export const currencyApi = createApi({
   reducerPath: 'currencyApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.apilayer.com/exchangerates_data' }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_CURRENCY_URL }),
   endpoints: (build) => ({
     fetchCurrencyRates: build.query<ICurrencyApiResponse, string>({
       query: (currency) => ({
@@ -13,7 +12,7 @@ export const currencyApi = createApi({
           base: currency
         },
         headers: {
-          apikey: 'jr18zv6f9n9fKIsalSTlIlIk9K5qpHZN'
+          apikey: process.env.REACT_APP_CURRENCY_APIKEY
         }
       })
     })
