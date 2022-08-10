@@ -8,17 +8,6 @@
   grid-column: column-start / column-end;
 }
 
-/* .select {
-  padding: 15px;
-  font-size: large;
-} */
-
-/* .select div div {
-  display: flex;
-  align-items: center;
-  height: 100%;
-} */
-
 @media screen and (max-width: 500px) {
   .form {
     grid-template-columns: [column-start] 1fr [column-end];

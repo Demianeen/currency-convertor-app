@@ -83,10 +83,10 @@ const About = () => {
               </a>
             </li>
           </ul>
-          <div
-            ref={ bottomComponentRef }
-          ></div>
         </nav>
+        <div className={ styles.scrollToBottom }
+          ref={ bottomComponentRef }
+        ></div>
       </section>
     </>
   )

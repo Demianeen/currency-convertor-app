@@ -2,13 +2,19 @@ import React from 'react'
 import styles from './StyledSelect.module.css'
 import { MenuItem, Select } from '@mui/material'
 import { StyledSelectProps } from './StyledSelect.props'
+import { useAppSelector } from '../../hooks/redux'
+import cn from 'classnames'
 
 const StyledSelect = ({ currencyOptions, currentCurrency, ...props }: StyledSelectProps) => {
+  const theme = useAppSelector(state => state.theme)
   return (
     <Select
       { ...props }
       value={ currentCurrency }
-      className={ styles.select }
+      className={ cn(styles.select, {
+        [styles.lightSelect]: theme === 'light',
+        [styles.darkSelect]: theme === 'dark'
+      }) }
       MenuProps={ {
         PaperProps: {
           sx: {

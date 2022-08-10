@@ -1,5 +1,6 @@
 .input {
-  padding: 8px 15px;
+  height: 4.2vh;
+  padding: 15px;
   font-size: large;
   border: 2px solid var(--dark-theme-primary);
 
